@@ -1,9 +1,6 @@
 /**
  * Central site configuration — contact details, WhatsApp number, metadata.
- *
- * IMPORTANT: The WhatsApp number below is a placeholder. Set the real number
- * via NEXT_PUBLIC_WHATSAPP_NUMBER (digits only, country code included,
- * e.g. "919876543210") or edit the fallback here before going live.
+ * Contact details match the Saahvik business card.
  */
 
 export const site = {
@@ -13,10 +10,10 @@ export const site = {
     'Saahvik builds premium websites and custom ERP systems, with Saahvik Hostel Management Software — our flagship SaaS — coming soon. Explore 100 premium hostel website templates across 10 quality tiers.',
   founder: 'Mayank Jangid',
   founderTitle: 'Founder',
-  email: 'jangidmayank2304@gmail.com',
-  // Placeholder — replace with the business-card number before launch.
-  phoneDisplay: '+91 99999 99999',
-  whatsappNumber: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '919999999999',
+  email: 'contact@saahvik.com',
+  website: 'www.saahvik.com',
+  phoneDisplay: '+91 95303 01131',
+  whatsappNumber: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '919530301131',
 } as const;
 
 export function formatINR(price: number): string {

@@ -1,8 +1,6 @@
 import type { Metadata } from 'next';
 import { Playfair_Display, Cormorant_Garamond, Jost } from 'next/font/google';
 import { site } from '@/lib/site';
-import SiteHeader from '@/components/SiteHeader';
-import SiteFooter from '@/components/SiteFooter';
 import './globals.css';
 
 // Placeholder for the brand's Didone-style wordmark serif — swap in the real
@@ -50,11 +48,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${playfair.variable} ${cormorant.variable} ${jost.variable}`}>
-      <body>
-        <SiteHeader />
-        <main>{children}</main>
-        <SiteFooter />
-      </body>
+      <body>{children}</body>
     </html>
   );
 }

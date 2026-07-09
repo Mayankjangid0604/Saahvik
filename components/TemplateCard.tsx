@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import type { Template } from '@/data/templates';
 import { starsFor } from '@/data/templates';
 import { formatINR, templateEnquiryMessage, whatsappLink } from '@/lib/site';
@@ -17,10 +18,11 @@ export default function TemplateCard({
 
   return (
     <article className="template-card">
-      <div className="template-card__preview">
+      <Link href={`/demo/${template.id}`} className="template-card__preview" title={`Open the ${template.name} live demo`}>
         <span className="template-card__preview-name">{template.name}</span>
         <span className="template-card__preview-stars">{starsFor(template.tier)}</span>
-      </div>
+        <span className="template-card__preview-hint">Live Demo ↗</span>
+      </Link>
       <div className="template-card__body">
         <div className="template-card__top">
           <h3 className="template-card__name">{template.name}</h3>
@@ -38,6 +40,9 @@ export default function TemplateCard({
           )}
         </div>
         <div className="template-card__actions">
+          <Link href={`/demo/${template.id}`} className="btn btn--gold btn--small">
+            Live Demo
+          </Link>
           <button
             type="button"
             className="btn btn--outline-navy btn--small"
@@ -49,9 +54,9 @@ export default function TemplateCard({
             href={enquiry}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn btn--gold btn--small"
+            className="btn btn--outline-navy btn--small"
           >
-            Enquire on WhatsApp
+            WhatsApp
           </a>
         </div>
       </div>

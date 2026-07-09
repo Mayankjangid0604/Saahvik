@@ -213,7 +213,12 @@ const SEEDS: Record<TierNumber, Seed[]> = {
 };
 
 function slugify(name: string): string {
-  return name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+  return name
+    .normalize('NFD')
+    .replace(/[̀-ͯ]/g, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/(^-|-$)/g, '');
 }
 
 export const TEMPLATES: Template[] = (Object.keys(SEEDS) as unknown as TierNumber[]).flatMap((key) => {

@@ -793,6 +793,27 @@ h1, h2, h3, h4 {
   opacity: 0.8;
 }
 
+.template-card__preview-hint {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border: 1px solid rgba(201, 166, 108, 0.45);
+  border-radius: 999px;
+  padding: 5px 12px;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  background: rgba(4, 12, 23, 0.55);
+}
+
+.template-card:hover .template-card__preview-hint {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .template-card__body {
   padding: 22px 22px 24px;
   display: flex;

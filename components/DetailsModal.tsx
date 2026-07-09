@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { useEffect } from 'react';
 import type { Template } from '@/data/templates';
 import { starsFor } from '@/data/templates';
@@ -52,15 +53,24 @@ export default function DetailsModal({
             <li key={f}>{f}</li>
           ))}
         </ul>
-        <a
-          href={enquiry}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="btn btn--gold"
-          style={{ width: '100%', justifyContent: 'center' }}
-        >
-          Enquire on WhatsApp
-        </a>
+        <div style={{ display: 'grid', gap: 10 }}>
+          <Link
+            href={`/demo/${template.id}`}
+            className="btn btn--gold"
+            style={{ justifyContent: 'center' }}
+          >
+            View Live Demo
+          </Link>
+          <a
+            href={enquiry}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn--outline-navy"
+            style={{ justifyContent: 'center' }}
+          >
+            Enquire on WhatsApp
+          </a>
+        </div>
       </div>
     </div>
   );
