@@ -361,7 +361,7 @@ export default function DemoSite({
   const t = template.tier;
   const seed = seedFrom(template.id);
   const brand = `${template.name} ${content.suffix}`;
-  const enquire = whatsappLink(templateEnquiryMessage(template.name, template.price, tier.name));
+  const enquire = whatsappLink(templateEnquiryMessage(template, tier.name));
 
   const roomCount = t <= 2 ? 3 : t <= 5 ? 4 : t <= 8 ? 5 : 6;
   const rooms = content.rooms.slice(0, roomCount);
@@ -910,7 +910,7 @@ export default function DemoSite({
           </div>
         </div>
         <p className="d-foot__note">
-          Demo website · &ldquo;{template.name}&rdquo; template by Saahvik · Tier {tier.tier} — {tier.name}
+          Demo website · Template № {template.number} &ldquo;{template.name}&rdquo; by Saahvik · Tier {tier.tier} — {tier.name}
         </p>
       </footer>
     </div>

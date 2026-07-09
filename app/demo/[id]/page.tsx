@@ -25,7 +25,7 @@ export default function DemoPage({ params }: { params: { id: string } }) {
   const tier = template && getTier(template.tier);
   if (!template || !config || !tier) notFound();
 
-  const enquire = whatsappLink(templateEnquiryMessage(template.name, template.price, tier.name));
+  const enquire = whatsappLink(templateEnquiryMessage(template, tier.name));
 
   return (
     <>
@@ -36,8 +36,8 @@ export default function DemoPage({ params }: { params: { id: string } }) {
             ← All Tier {template.tier} templates
           </Link>
           <span className="saahvik-bar__info">
-            You&rsquo;re previewing <b>{template.name}</b> · Tier {template.tier} — {tier.name} ·{' '}
-            {formatINR(template.price)}
+            You&rsquo;re previewing <b>№ {template.number} — {template.name}</b> · Tier {template.tier} —{' '}
+            {tier.name} · {formatINR(template.price)}
           </span>
           <a href={enquire} target="_blank" rel="noopener noreferrer" className="saahvik-bar__cta">
             Use this template

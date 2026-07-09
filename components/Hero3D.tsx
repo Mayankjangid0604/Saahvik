@@ -39,20 +39,17 @@ function Wordmark() {
           letterSpacing={0.16}
         >
           SAAHVIK
+          {/* polished brass — bright specular gold like the brand render.
+              Metalness stays moderate: with no env-map, full metal goes dull. */}
           <meshStandardMaterial
-            color="#e3c98f"
-            metalness={0.82}
-            roughness={0.2}
-            emissive={GOLD_DEEP}
-            emissiveIntensity={0.32}
+            color="#f5d68e"
+            metalness={0.65}
+            roughness={0.22}
+            emissive="#a4762f"
+            emissiveIntensity={0.42}
           />
         </Text3D>
       </Center>
-      {/* wide elliptical orbit ring skimming under the wordmark */}
-      <mesh rotation={[Math.PI / 2.1, 0, 0]} position={[0, -0.62, -0.6]} scale={[1.5, 1, 1]}>
-        <torusGeometry args={[3.4, 0.016, 12, 128]} />
-        <meshStandardMaterial color={GOLD} metalness={0.9} roughness={0.3} transparent opacity={0.75} />
-      </mesh>
     </group>
   );
 }
@@ -138,10 +135,11 @@ export default function Hero3D() {
       gl={{ antialias: true, alpha: true, powerPreference: 'high-performance' }}
     >
       {/* warm key light, cool rim, gold under-glow */}
-      <ambientLight intensity={0.5} />
-      <directionalLight position={[5, 7, 6]} intensity={2.6} color="#ffe3b0" />
-      <directionalLight position={[-6, 2, -4]} intensity={0.5} color="#7fa0c8" />
-      <pointLight position={[0, -4, 3]} intensity={0.7} color={GOLD} />
+      <ambientLight intensity={0.45} />
+      <directionalLight position={[5, 7, 6]} intensity={2.8} color="#fff0cf" />
+      <directionalLight position={[-5, -2, 5]} intensity={0.9} color="#ffd98f" />
+      <directionalLight position={[-6, 2, -4]} intensity={0.4} color="#7fa0c8" />
+      <pointLight position={[0, -4, 3]} intensity={0.6} color={GOLD} />
       <group position={[0, 0.55, 0]}>
         <Wordmark />
       </group>

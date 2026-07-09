@@ -28,6 +28,14 @@ export default function LogoWordmark({
       aria-label={tagline ? 'Saahvik — Smarter Hostel Management.' : 'Saahvik'}
       style={{ color }}
     >
+      <defs>
+        {/* polished gold-foil fill for the lettering */}
+        <linearGradient id="swm-gold" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stopColor="#F2D287" />
+          <stop offset="0.45" stopColor="#C9A96E" />
+          <stop offset="1" stopColor="#9a7642" />
+        </linearGradient>
+      </defs>
       {/* ---- top ornament: dot rules, scrollwork, fleur-de-lis ---- */}
       <g stroke="currentColor" fill="currentColor">
         <circle cx="38" cy="34" r="2.6" stroke="none" />
@@ -54,7 +62,7 @@ export default function LogoWordmark({
         x="210"
         y="82"
         textAnchor="middle"
-        fill="currentColor"
+        fill="url(#swm-gold)"
         fontFamily="var(--font-display), 'Playfair Display', Georgia, serif"
         fontSize="40"
         fontWeight="600"

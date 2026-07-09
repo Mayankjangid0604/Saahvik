@@ -27,7 +27,7 @@ export default function DetailsModal({
     };
   }, [onClose]);
 
-  const enquiry = whatsappLink(templateEnquiryMessage(template.name, template.price, tierName));
+  const enquiry = whatsappLink(templateEnquiryMessage(template, tierName));
 
   return (
     <div
@@ -44,7 +44,7 @@ export default function DetailsModal({
         <div className="modal__stars">{starsFor(template.tier)}</div>
         <h3 id="modal-title">{template.name}</h3>
         <div className="modal__tierline">
-          Tier {template.tier} · {tierName} · {template.category}
+          Template № {template.number} · Tier {template.tier} · {tierName} · {template.category}
         </div>
         <div className="modal__price">{formatINR(template.price)}</div>
         <p style={{ fontSize: '0.85rem', opacity: 0.6 }}>One-time price · includes deployment</p>

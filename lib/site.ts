@@ -25,6 +25,9 @@ export function whatsappLink(message: string): string {
   return `https://wa.me/${site.whatsappNumber}?text=${encodeURIComponent(message)}`;
 }
 
-export function templateEnquiryMessage(templateName: string, price: number, tierName: string): string {
-  return `Hi Saahvik! I'm interested in the "${templateName}" template (${tierName} tier, ${formatINR(price)}). Please share more details.`;
+export function templateEnquiryMessage(
+  template: { number: number; name: string; price: number },
+  tierName: string,
+): string {
+  return `Hi Saahvik! I'm interested in Template #${template.number} — "${template.name}" (${tierName} tier, ${formatINR(template.price)}). Please share more details.`;
 }

@@ -200,12 +200,11 @@ h1, h2, h3, h4 {
   font-family: var(--font-display);
   font-size: 1.35rem;
   letter-spacing: 0.34em;
-  color: var(--ivory);
   text-transform: uppercase;
-}
-
-.site-header__wordmark span {
-  color: var(--gold);
+  background: linear-gradient(180deg, #f2d287 0%, var(--gold) 55%, #9a7642 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .site-nav {
@@ -859,6 +858,19 @@ h1, h2, h3, h4 {
   letter-spacing: 3px;
   font-size: 0.7rem;
   opacity: 0.8;
+}
+
+.template-card__preview-number {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  color: var(--gold);
+  border: 1px solid rgba(201, 169, 110, 0.35);
+  border-radius: 999px;
+  padding: 4px 10px;
+  background: rgba(7, 17, 32, 0.55);
 }
 
 .template-card__preview-hint {

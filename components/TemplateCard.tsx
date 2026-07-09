@@ -14,11 +14,12 @@ export default function TemplateCard({
   tierName: string;
   onDetails: (template: Template) => void;
 }) {
-  const enquiry = whatsappLink(templateEnquiryMessage(template.name, template.price, tierName));
+  const enquiry = whatsappLink(templateEnquiryMessage(template, tierName));
 
   return (
     <article className="template-card">
       <Link href={`/demo/${template.id}`} className="template-card__preview" title={`Open the ${template.name} live demo`}>
+        <span className="template-card__preview-number">№ {String(template.number).padStart(3, '0')}</span>
         <span className="template-card__preview-name">{template.name}</span>
         <span className="template-card__preview-stars">{starsFor(template.tier)}</span>
         <span className="template-card__preview-hint">Live Demo ↗</span>

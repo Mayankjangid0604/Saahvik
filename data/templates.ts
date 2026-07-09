@@ -40,6 +40,8 @@ export interface Tier {
 export interface Template {
   /** URL-safe slug, unique across the whole catalog. */
   id: string;
+  /** Catalog number 1–100 (tier 1 = №1–10 … tier 10 = №91–100). */
+  number: number;
   name: string;
   tier: TierNumber;
   /** Price in INR — always within the tier's band. */
@@ -223,8 +225,9 @@ function slugify(name: string): string {
 
 export const TEMPLATES: Template[] = (Object.keys(SEEDS) as unknown as TierNumber[]).flatMap((key) => {
   const tier = Number(key) as TierNumber;
-  return SEEDS[tier].map(([name, price, category, ...extras]): Template => ({
+  return SEEDS[tier].map(([name, price, category, ...extras], i): Template => ({
     id: `${slugify(name)}-t${tier}`,
+    number: (tier - 1) * 10 + i + 1,
     name,
     tier,
     price,
@@ -232,6 +235,10 @@ export const TEMPLATES: Template[] = (Object.keys(SEEDS) as unknown as TierNumbe
     features: [...extras, ...TIER_BASE_FEATURES[tier]],
   }));
 });
+
+export function templateByNumber(n: number): Template | undefined {
+  return TEMPLATES.find((t) => t.number === n);
+}
 
 export function templatesForTier(tier: number): Template[] {
   return TEMPLATES.filter((t) => t.tier === tier);
