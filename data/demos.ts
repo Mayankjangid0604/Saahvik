@@ -72,6 +72,13 @@ export type FontKey = keyof typeof FONT_PAIRS;
 export type HeroVariant = 'split' | 'aurora' | 'arch' | 'collage' | 'band' | 'minimal';
 export type Pattern = 'none' | 'dots' | 'grid' | 'diagonal' | 'waves' | 'sparkle';
 
+/**
+ * Signature sections reserved for the five highest-priced Masterpiece
+ * templates (№6–№10 of tier 10) — each gets an experience no other
+ * template in the catalog has.
+ */
+export type LuxeFeature = 'medallion' | 'explorer' | 'metrics' | 'colonnade' | 'manifesto';
+
 export interface DemoConfig {
   palette: PaletteKey;
   font: FontKey;
@@ -81,6 +88,8 @@ export interface DemoConfig {
   radius: number;
   /** The demo hostel's own tagline, shown in its hero. */
   tagline: string;
+  /** Signature features — only the Masterpiece Five carry these. */
+  luxe?: LuxeFeature[];
 }
 
 type Row = [id: string, palette: PaletteKey, font: FontKey, hero: HeroVariant, pattern: Pattern, radius: number, tagline: string];
@@ -207,10 +216,19 @@ const ROWS: Row[] = [
   ['the-saahvik-standard-t10', 'ivory-navy',    'playfair-jost', 'aurora',  'sparkle', 14, 'Everything we know, in one address.'],
 ];
 
+/** Signature experiences for the Masterpiece Five (tier 10, №6–№10). */
+const LUXE: Record<string, LuxeFeature[]> = {
+  'summa-t10': ['explorer'],
+  'sovereign-house-t10': ['metrics'],
+  'palazzo-t10': ['colonnade'],
+  'auric-crown-t10': ['medallion'],
+  'the-saahvik-standard-t10': ['manifesto', 'medallion'],
+};
+
 export const DEMOS: Record<string, DemoConfig> = Object.fromEntries(
   ROWS.map(([id, palette, font, hero, pattern, radius, tagline]) => [
     id,
-    { palette, font, hero, pattern, radius, tagline },
+    { palette, font, hero, pattern, radius, tagline, luxe: LUXE[id] },
   ]),
 );
 

@@ -188,6 +188,155 @@ function seedFrom(id: string): number {
   return h;
 }
 
+/* ------------------------------------------------------------------ */
+/* Signature "luxe" sections — exclusive to the Masterpiece Five.      */
+/* ------------------------------------------------------------------ */
+
+/** Slow-spinning gold monogram coin (Auric Crown, The Saahvik Standard). */
+function LuxeMedallion({ glyph, brand }: { glyph: string; brand: string }) {
+  return (
+    <section className="d-section lux-medallion">
+      <div className="d-wrap d-center">
+        <div className="lux-medallion__coin" aria-hidden="true">
+          <span>{glyph}</span>
+        </div>
+        <span className="d-kicker" style={{ marginTop: 26 }}>The mark of {brand}</span>
+        <p className="d-lede" style={{ margin: '6px auto 0' }}>
+          Hand-finished detail, from the monogram down to the door numbers.
+        </p>
+      </div>
+    </section>
+  );
+}
+
+/** Interactive-styled floor & room explorer (Summa). */
+function LuxeExplorer({ seed }: { seed: number }) {
+  const floors = ['Ground', 'First', 'Second', 'Third'];
+  const cells = Array.from({ length: 24 }, (_, i) => (seed + i * 7) % 5); // 0 = taken
+  return (
+    <section className="d-section lux-explorer">
+      <div className="d-wrap">
+        <div className="d-center">
+          <span className="d-kicker">Digital twin</span>
+          <h2 className="d-h2">Explore the building, room by room.</h2>
+          <p className="d-lede" style={{ margin: '0 auto' }}>
+            Every room mapped live — see exactly what&rsquo;s free before you visit.
+          </p>
+        </div>
+        <div className="lux-explorer__floors">
+          {floors.map((f, i) => (
+            <span key={f} className={i === 1 ? 'is-active' : undefined}>{f} Floor</span>
+          ))}
+        </div>
+        <div className="lux-explorer__grid" aria-hidden="true">
+          {cells.map((v, i) => (
+            <div key={i} className={`lux-explorer__cell${v === 0 ? ' is-taken' : ''}`}>
+              {101 + i}
+            </div>
+          ))}
+        </div>
+        <div className="lux-explorer__legend">
+          <span><i /> Available</span>
+          <span><i className="is-taken" /> Occupied</span>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/** Boardroom KPI band with sparklines + client wall (Sovereign House). */
+function LuxeMetrics() {
+  const kpis: [label: string, value: string, points: string][] = [
+    ['Avg. length of stay', '14 mo', '0,22 20,18 40,19 60,12 80,8 100,4'],
+    ['Corporate accounts', '38', '0,20 20,16 40,17 60,10 80,9 100,2'],
+    ['On-time invoicing', '100%', '0,12 20,12 40,12 60,12 80,12 100,12'],
+    ['NPS score', '86', '0,24 20,20 40,14 60,12 80,6 100,3'],
+  ];
+  return (
+    <section className="d-section lux-metrics">
+      <div className="d-wrap">
+        <div className="d-center">
+          <span className="d-kicker">The numbers that matter</span>
+          <h2 className="d-h2">Run like a business. Because it is one.</h2>
+        </div>
+        <div className="lux-metrics__grid">
+          {kpis.map(([label, value, points]) => (
+            <div key={label} className="lux-metrics__card">
+              <span>{label}</span>
+              <b>{value}</b>
+              <svg viewBox="0 0 100 26" preserveAspectRatio="none" aria-hidden="true">
+                <polyline points={points} fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+              </svg>
+            </div>
+          ))}
+        </div>
+        <div className="d-logos" style={{ marginTop: 34 }}>
+          {['Meridian Tech', 'Aster Consulting', 'NorthBridge', 'Kite Airlines', 'Velar Motors'].map((c) => (
+            <span key={c}>{c}</span>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/** Arched walkthrough strip (Palazzo). */
+function LuxeColonnade({ seed }: { seed: number }) {
+  const halls = ['Cortile', 'Colonnade', 'Fresco Hall', 'Terrazza', 'Le Suite'];
+  return (
+    <section className="d-section lux-colonnade">
+      <div className="d-wrap">
+        <div className="d-center">
+          <span className="d-kicker">The walkthrough</span>
+          <h2 className="d-h2">Walk the palazzo, arch by arch.</h2>
+        </div>
+        <div className="lux-colonnade__row">
+          {halls.map((h, i) => (
+            <div key={h} className="lux-colonnade__arch">
+              <Visual i={seed + i} className="lux-colonnade__fill" />
+              <span>{h}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/** The 100th-template manifesto (The Saahvik Standard). */
+function LuxeManifesto({ brand }: { brand: string }) {
+  const clauses = [
+    'Every conversion pattern from the 99 templates before it',
+    'Real-time 3D and motion, tuned to stay out of the way',
+    'Full booking journey with payments, deposits and receipts',
+    'Concierge onboarding — we move your content in for you',
+    'Accessibility pass on every page, not just the home page',
+    'Twelve months of premium support, measured in hours not days',
+  ];
+  return (
+    <section className="d-section lux-manifesto">
+      <div className="d-wrap">
+        <div className="lux-manifesto__card">
+          <span className="d-kicker">Template № 100 of 100</span>
+          <h2 className="d-h2">The standard, in writing.</h2>
+          <p className="d-lede" style={{ marginBottom: 26 }}>
+            {brand} is the last template in the catalog because everything we
+            learned building the first ninety-nine lives inside it.
+          </p>
+          <ul>
+            {clauses.map((c) => (
+              <li key={c}>{c}</li>
+            ))}
+          </ul>
+          <div className="lux-manifesto__sign">
+            — The Saahvik Studio
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function Visual({ i, label, glyph, className }: { i: number; label?: string; glyph?: string; className?: string }) {
   return (
     <div className={`d-visual d-visual--${i % 4}${className ? ` ${className}` : ''}`}>
@@ -219,6 +368,8 @@ export default function DemoSite({
   const amenities = content.amenities.slice(0, t <= 3 ? 6 : 8);
   const quotes = TESTIMONIALS.slice(seed % 3, (seed % 3) + 3);
   const glyph = template.name.charAt(0);
+  const luxe = config.luxe ?? [];
+  const hasLuxe = (f: (typeof luxe)[number]) => luxe.includes(f);
 
   const style = {
     '--d-bg': palette.bg,
@@ -250,7 +401,7 @@ export default function DemoSite({
   );
 
   return (
-    <div className="demo" data-mode={palette.mode} style={style}>
+    <div className={`demo${luxe.length ? ' d-luxe' : ''}`} data-mode={palette.mode} style={style}>
       {/* ---- Nav ---- */}
       <nav className="d-nav">
         <div className="d-wrap d-nav__in">
@@ -336,6 +487,9 @@ export default function DemoSite({
         )}
       </header>
 
+      {/* ---- Luxe: medallion ---- */}
+      {hasLuxe('medallion') && <LuxeMedallion glyph={glyph} brand={brand} />}
+
       {/* ---- Marquee (tier 10) ---- */}
       {t >= 10 && (
         <div className="d-marquee">
@@ -395,6 +549,9 @@ export default function DemoSite({
         </section>
       )}
 
+      {/* ---- Luxe: boardroom metrics ---- */}
+      {hasLuxe('metrics') && <LuxeMetrics />}
+
       {/* ---- About ---- */}
       <section className="d-section">
         <div className="d-wrap d-center">
@@ -447,6 +604,9 @@ export default function DemoSite({
           </div>
         </div>
       </section>
+
+      {/* ---- Luxe: room explorer ---- */}
+      {hasLuxe('explorer') && <LuxeExplorer seed={seed} />}
 
       {/* ---- Tariff table (tier 4+) ---- */}
       {t >= 4 && (
@@ -564,6 +724,9 @@ export default function DemoSite({
           </div>
         </section>
       )}
+
+      {/* ---- Luxe: colonnade walkthrough ---- */}
+      {hasLuxe('colonnade') && <LuxeColonnade seed={seed} />}
 
       {/* ---- Virtual tour (tier 6+) ---- */}
       {t >= 6 && (
@@ -715,6 +878,9 @@ export default function DemoSite({
           </div>
         </section>
       )}
+
+      {/* ---- Luxe: manifesto ---- */}
+      {hasLuxe('manifesto') && <LuxeManifesto brand={brand} />}
 
       {/* ---- CTA ---- */}
       <section id="visit" className={`d-section d-section--primary d-cta${patternClass}`}>

@@ -48,7 +48,13 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${playfair.variable} ${cormorant.variable} ${jost.variable}`}>
-      <body>{children}</body>
+      <body>
+        <noscript>
+          {/* Without JS the IntersectionObserver never fires — show everything. */}
+          <style>{'.reveal{opacity:1 !important;transform:none !important}'}</style>
+        </noscript>
+        {children}
+      </body>
     </html>
   );
 }
