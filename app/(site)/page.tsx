@@ -2,6 +2,7 @@ import Link from 'next/link';
 import BrandDivider from '@/components/BrandDivider';
 import HeroVisual from '@/components/HeroVisual';
 import Reveal from '@/components/Reveal';
+import TiltCard from '@/components/TiltCard';
 import WaitlistForm from '@/components/WaitlistForm';
 import { DEMOS } from '@/data/demos';
 import { TEMPLATES, TIERS, starsFor } from '@/data/templates';
@@ -41,33 +42,30 @@ export default function HomePage() {
       {/* ---------- Hero ---------- */}
       <section className="hero">
         <HeroVisual />
-        <div className="container" style={{ width: '100%' }}>
-          <div className="hero__content">
-            <span className="kicker">Websites · ERP · Hospitality SaaS</span>
-            <h1 className="hero__title">
-              Saahvi<em>k</em>
-            </h1>
-            <p className="hero__tagline">{site.tagline}</p>
-            <p className="lede">
-              We craft premium websites and custom ERP systems for hostels, PGs
-              and co-living brands — and we&apos;re building the hostel
-              management platform they&apos;ll run on.
-            </p>
-            <div className="hero__actions">
-              <Link href="/templates" className="btn btn--gold">
-                Browse 100 Templates
-              </Link>
-              <Link href="/custom" className="btn btn--outline">
-                Start a Custom Project
-              </Link>
-            </div>
-            <div className="hero__trust">
-              <span>100 live demos</span>
-              <span>10 quality tiers</span>
-              <span>From {formatINR(TIERS[0].priceMin)}</span>
-              <span>Same-day response</span>
-            </div>
+        <div className="hero__content">
+          <h1 className="hero__title-sr">Saahvik — {site.tagline}</h1>
+          <BrandDivider width={240} />
+          <p className="hero__tagline">{site.tagline}</p>
+          <p className="lede" style={{ margin: '0 auto' }}>
+            Premium websites and custom ERP systems for hostels, PGs and
+            co-living brands — and the hostel management platform they&apos;ll
+            run on, coming soon.
+          </p>
+          <div className="hero__actions">
+            <Link href="/templates" className="btn btn--gold">
+              Browse 100 Templates
+            </Link>
+            <Link href="/custom" className="btn btn--outline">
+              Start a Custom Project
+            </Link>
           </div>
+          <div className="hero__trust" style={{ justifyContent: 'center' }}>
+            <span>100 live demos</span>
+            <span>10 quality tiers</span>
+            <span>From {formatINR(TIERS[0].priceMin)}</span>
+            <span>Same-day response</span>
+          </div>
+          <div className="hero__scroll" aria-hidden="true" />
         </div>
       </section>
 
@@ -163,7 +161,7 @@ export default function HomePage() {
       </section>
 
       {/* ---------- Coming Soon: SaaS ---------- */}
-      <section className="section section--dark coming-soon">
+      <section className="section section--dark coming-soon texture-dark">
         <div className="container">
           <div className="coming-soon__grid">
             <Reveal>
@@ -296,10 +294,13 @@ export default function HomePage() {
       </section>
 
       {/* ---------- The Masterpiece Five ---------- */}
-      <section className="section section--dark">
+      <section className="section section--dark texture-dark">
         <div className="container">
           <Reveal>
             <div className="center">
+              <div className="gold-medallion" aria-hidden="true">
+                <span>S</span>
+              </div>
               <span className="kicker">The Masterpiece Five</span>
               <h2 className="heading-lg">Our five finest, in a league of their own.</h2>
               <BrandDivider width={260} />
@@ -313,7 +314,7 @@ export default function HomePage() {
           <div className="master-five">
             {MASTER_FIVE.map((t, i) => (
               <Reveal key={t.id} delay={i * 90}>
-                <div className="master-card" style={{ height: '100%' }}>
+                <TiltCard className="master-card" max={6}>
                   <div className="master-card__in">
                     <div className="master-card__rank">№ {String(i + 6).padStart(2, '0')} / 10</div>
                     <h3>{t.name}</h3>
@@ -331,7 +332,7 @@ export default function HomePage() {
                       </Link>
                     </div>
                   </div>
-                </div>
+                </TiltCard>
               </Reveal>
             ))}
           </div>

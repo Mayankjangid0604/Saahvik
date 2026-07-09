@@ -1,18 +1,16 @@
 import Link from 'next/link';
 import { site, whatsappLink } from '@/lib/site';
-import BrandDivider from './BrandDivider';
+import LogoWordmark from './brand/LogoWordmark';
 
 export default function SiteFooter() {
   return (
     <footer className="site-footer">
       <div className="container">
-        <BrandDivider color="rgba(201,166,108,0.5)" width={260} />
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
+          <LogoWordmark width={320} tagline />
+        </div>
         <div className="site-footer__grid" style={{ marginTop: 36 }}>
           <div>
-            <div className="site-footer__wordmark">
-              Saahvi<span>k</span>
-            </div>
-            <p className="site-footer__tagline">{site.tagline}</p>
             <p style={{ opacity: 0.75, fontSize: '0.94rem', maxWidth: '36ch' }}>
               Websites, custom ERP systems, and the upcoming Saahvik Hostel
               Management Software — built for the business of hospitality.

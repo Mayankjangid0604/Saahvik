@@ -803,9 +803,9 @@
   left: 0;
   right: 0;
   z-index: 90;
-  background: rgba(4, 12, 23, 0.94);
+  background: rgba(7, 17, 32, 0.94);
   backdrop-filter: blur(12px);
-  border-top: 1px solid rgba(201, 166, 108, 0.35);
+  border-top: 1px solid rgba(201, 169, 110, 0.35);
   color: #f3eee3;
   font-family: var(--f-jost), system-ui, sans-serif;
 }
@@ -818,14 +818,14 @@
   gap: 18px;
   font-size: 0.86rem;
 }
-.saahvik-bar__back { color: #c9a66c; white-space: nowrap; }
+.saahvik-bar__back { color: #c9a96e; white-space: nowrap; }
 .saahvik-bar__back:hover { text-decoration: underline; }
 .saahvik-bar__info { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; opacity: 0.9; }
-.saahvik-bar__info b { color: #c9a66c; }
+.saahvik-bar__info b { color: #c9a96e; }
 .saahvik-bar__cta {
   flex: none;
-  background: linear-gradient(120deg, #c9a66c, #dcc08c);
-  color: #040c17;
+  background: linear-gradient(120deg, #c9a96e, #dcc08c);
+  color: #071120;
   font-weight: 600;
   padding: 9px 20px;
   border-radius: 999px;

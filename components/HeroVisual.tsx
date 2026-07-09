@@ -2,13 +2,13 @@
 
 import dynamic from 'next/dynamic';
 import { useEffect, useState } from 'react';
-import Monogram from './Monogram';
+import LogoWordmark from './brand/LogoWordmark';
 
 // WebGL bundle only loads when we actually render the canvas.
 const Hero3D = dynamic(() => import('./Hero3D'), { ssr: false });
 
 /**
- * Decides between the R3F hero scene and a static monogram fallback:
+ * Decides between the R3F hero scene and the static wordmark lockup:
  * reduced-motion users, save-data connections, and small screens get
  * the lightweight SVG instead of WebGL.
  */
@@ -34,7 +34,7 @@ export default function HeroVisual() {
   // Static fallback (also shown pre-hydration so there's never a blank flash).
   return (
     <div className="hero__fallback" aria-hidden="true">
-      <Monogram size={280} transparent gold="rgba(201,166,108,0.85)" />
+      <LogoWordmark width={520} />
     </div>
   );
 }
