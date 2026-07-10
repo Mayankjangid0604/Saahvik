@@ -1,12 +1,12 @@
 import Link from 'next/link';
 import BrandDivider from '@/components/BrandDivider';
-import HeroVisual from '@/components/HeroVisual';
+import HeroShowcase from '@/components/HeroShowcase';
 import Reveal from '@/components/Reveal';
 import TiltCard from '@/components/TiltCard';
 import WaitlistForm from '@/components/WaitlistForm';
 import { DEMOS } from '@/data/demos';
 import { TEMPLATES, TIERS, starsFor } from '@/data/templates';
-import { formatINR, site } from '@/lib/site';
+import { formatINR, site, whatsappLink } from '@/lib/site';
 
 const MARQUEE_ITEMS = [
   'Website Design',
@@ -41,32 +41,39 @@ export default function HomePage() {
     <>
       {/* ---------- Hero ---------- */}
       <section className="hero">
-        <HeroVisual />
-        <div className="hero__content">
-          <h1 className="hero__title-sr">Saahvik — {site.tagline}</h1>
-          <BrandDivider width={240} />
-          <p className="hero__tagline">{site.tagline}</p>
-          <p className="lede" style={{ margin: '0 auto' }}>
-            Premium websites and custom ERP systems for hostels, PGs and
-            co-living brands — and the hostel management platform they&apos;ll
-            run on, coming soon.
-          </p>
-          <div className="hero__actions">
-            <Link href="/templates" className="btn btn--gold">
-              Browse 100 Templates
-            </Link>
-            <Link href="/custom" className="btn btn--outline">
-              Start a Custom Project
-            </Link>
+        <div className="container hero__grid">
+          <div className="hero__copy">
+            <span className="kicker">Websites · ERP · Hostel Management</span>
+            <h1 className="hero__title">
+              Your hostel deserves a <em>beautiful</em> home online.
+            </h1>
+            <p className="hero__sub">
+              Pick from 100 ready-made hostel websites — every single one has
+              a live demo you can open right now — or have us craft something
+              fully custom. Live in days, loved by guests, built to fill beds.
+            </p>
+            <div className="hero__actions">
+              <Link href="/templates" className="btn btn--gold">
+                Explore 100 Templates
+              </Link>
+              <a
+                href={whatsappLink('Hi Saahvik! I saw your website and would love to discuss a website for my hostel.')}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn--outline-navy"
+              >
+                Chat on WhatsApp
+              </a>
+            </div>
+            <div className="hero__trust">
+              <span>Live demo for every template</span>
+              <span>From {formatINR(TIERS[0].priceMin)}</span>
+              <span>Same-day reply</span>
+            </div>
           </div>
-          <div className="hero__trust" style={{ justifyContent: 'center' }}>
-            <span>100 live demos</span>
-            <span>10 quality tiers</span>
-            <span>From {formatINR(TIERS[0].priceMin)}</span>
-            <span>Same-day response</span>
-          </div>
-          <div className="hero__scroll" aria-hidden="true" />
+          <HeroShowcase />
         </div>
+        <div className="hero__scroll" aria-hidden="true" />
       </section>
 
       {/* ---------- Marquee ---------- */}
